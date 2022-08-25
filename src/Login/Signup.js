@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from 'react';
 
-const URL = "https://dollarsbank-v3.herokuapp.com/api/customer"
+//const URL = "https://dollarsbank-v3.herokuapp.com/api/customer"
+const URL = "http://localhost:8080/api/customer"
 
 const SignUp = () => {
 
@@ -11,10 +12,10 @@ const SignUp = () => {
         // const signal = controller.signal;
         
         const details = {
-            "name": "Dylan McCullor",
-            "username": "dMccullor104",
-            "address": "4700 Staggerbrush Rd.",
-            "phone": 9727419974,
+            "name": "Britney Spears",
+            "username": "bSpears105",
+            "address": "Beverly Hills",
+            "phone": 5649871595,
             "password": "pass123",
             "role": "ROLE_USER",
             "enabled": true,
@@ -26,10 +27,13 @@ const SignUp = () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(details),
+            body: JSON.stringify(details)
             //signal: signal
         })
         .then(response => {
+            if(response.status === 409) {
+                throw new Error("Customer already exists in database.");
+            }
             return response.json();
         })
         .then(result  => {
