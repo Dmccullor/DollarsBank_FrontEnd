@@ -2,9 +2,43 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  box-sizing: border-box;
+}
+
+.nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 10vh;
+  background-color: rgb(127, 186, 215);
+}
+
+.nav a {
+  color:inherit;
+  text-decoration: none;
+
+}
+
+.a {
+  text-decoration: none;
+}
+
+.nav ul {
+  padding: 5%;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-links{
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  color: 'white';
 }
 
 .signup-wrapper {
@@ -15,10 +49,17 @@
   padding-left: 5%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.home-link {
+  font-size: 2rem;
+}
+
+.body {
+  padding-left: 5%;
+  margin-left: 5%;
+}
+
+.h1 {
+  text-align: center;
 }
 
 .App-header {
@@ -30,17 +71,4 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import '../App.css';
 
-//const URL = "https://dollarsbank-v3.herokuapp.com/api/authenticate"
-const URL = "http://localhost:8080/api/authenticate"
+//const URL = "https://dollarsbank-v3.herokuapp.com/api/authenticate;"
+const URL = "http://localhost:8080/api/authenticate";
 
 const Login = () => {
 
@@ -34,7 +34,7 @@ const Login = () => {
             body: JSON.stringify(credentials)
         })
         .then(response => {
-            if(response.status == 404) {
+            if(response.status === 404) {
                 setFound(false);
                 throw new Error("Username or password incorrect.");
             }
@@ -45,7 +45,7 @@ const Login = () => {
         })
         .then(result => {
             sessionStorage.setItem('jwt', result.jwt);
-            console.log(sessionStorage.getItem('jwt'));
+            sessionStorage.setItem('username', credentials.username);
         })
         .catch((error) => {
             console.log(error);
@@ -56,7 +56,7 @@ const Login = () => {
         return (
             <div className='welcome-message'>
                 <h1>Login Successful!</h1>
-                <p>Please proceed to the home page.</p>
+                <h3>Please proceed to the <a href='/home'>homepage</a></h3>
             </div>
         )
     }
@@ -93,6 +93,9 @@ const Login = () => {
                         </div>
                     </form>
                 </h3>
+                <h5>
+                    Don't have an account? <a href="/signup">Sign Up</a>
+                </h5>
             </div>
         )
     }

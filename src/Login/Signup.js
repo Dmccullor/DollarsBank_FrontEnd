@@ -74,7 +74,7 @@ const SignUp = () => {
         return (
             <div className='welcome-message'>
                 <h1>Welcome to DollarsBank {user.name}!</h1>
-                <p>Your new Customer ID is {user.id}</p>
+                <p>Please proceed to login <a href='/'>here</a></p>
             </div>
         )
     }
