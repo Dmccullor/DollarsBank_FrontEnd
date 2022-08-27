@@ -89,7 +89,7 @@ const Login = () => {
                                 required/>
                         </label>
                         <div>
-                            <button type='submit'><h3>Login</h3></button>
+                            <button type='submit'>Login</button>
                         </div>
                     </form>
                 </h3>
