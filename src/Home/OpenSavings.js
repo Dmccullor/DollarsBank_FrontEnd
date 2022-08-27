@@ -117,7 +117,9 @@ const Opensavings = () => {
     else {
         return (
             <div className='form-container'>
-                <h1>Open a new Savings Account</h1>
+                <div className='title'>
+                    <h1>Open a new Savings Account</h1>
+                </div>
                 <h3>
                     <form onSubmit={handleSubmit}>
                         <label>

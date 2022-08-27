@@ -89,8 +89,10 @@ function Withdraw() {
     }
     else {
         return (
-            <div>
-                <h1>Withdraw</h1>
+            <div className='main-page'>
+                <div className='title'>
+                    <h1>Withdraw</h1>
+                </div>
                 <h3>
                     <form onSubmit={handleSubmit}>
                         {user.has_savings ?
