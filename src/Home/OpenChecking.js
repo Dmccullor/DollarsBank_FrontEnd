@@ -18,6 +18,32 @@ const OpenChecking = () => {
         setInit(e.target.value);
     }
 
+    useEffect( () => {
+        fetch(transactionURL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'appliation/json',
+                'Authorization': 'Bearer ' + sessionStorage.getItem('jwt')
+            },
+            body: JSON.stringify({
+                'amount': init,
+                'toAcct': 0,
+                'type': 0
+            })
+        })
+        .then(response => {
+            if(response.ok) {
+                return response.json();
+            }
+            else {
+                throw new Error("Something went wrong");
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }, [valid])
+
     const handleSubmit = async e => {
         e.preventDefault();
         setSubmitted(true);
@@ -50,31 +76,6 @@ const OpenChecking = () => {
         })
     }
 
-    useEffect( () => {
-        fetch(transactionURL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'appliation/json',
-                'Authorization': 'Bearer ' + sessionStorage.getItem('jwt')
-            },
-            body: JSON.stringify({
-                'amount': init,
-                'toAcct': 0,
-                'type': 0
-            })
-        })
-        .then(response => {
-            if(response.ok) {
-                return response.json();
-            }
-            else {
-                throw new Error("Something went wrong");
-            }
-        })
-        .catch((error) => {
-            console.log(error);
-        })
-    }, valid)
 
     if(submitted && valid) {
         return (
@@ -88,7 +89,7 @@ const OpenChecking = () => {
     else {
         return (
             <div className='form-container'>
-                <h1>Open a new checking account</h1>
+                <h1>Open a new Checking Account</h1>
                 <h3>
                     <form onSubmit={handleSubmit}>
                         <label>
@@ -104,7 +105,7 @@ const OpenChecking = () => {
                                 required/>
                         </label>
                         <div>
-                            <button type='submit'>Submit</button>
+                            <button type='submit'>Confirm</button>
                         </div>
                     </form>
                 </h3>

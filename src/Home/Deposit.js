@@ -2,9 +2,9 @@ import React, {useState, useEffect} from 'react';
 import '../App.css';
 
 const transactionURL = "http://localhost:8080/api/transaction";
-const customerURL = "http://localhost:8080/api/customer/username" + sessionStorage.getItem('username');
+const customerURL = "http://localhost:8080/api/customer/username/" + sessionStorage.getItem('username');
 //const transactionURL = "https://dollarsbank-v3.herokuapp.com/api/transaction;"
-//const customerURL = "https://dollarsbankd-v3.herokuapp.com/api/customer/username" + sessionStorage.getItem('username');
+//const customerURL = "https://dollarsbankd-v3.herokuapp.com/api/customer/username/" + sessionStorage.getItem('username');
 
 function Deposit() {
     const [submitted, setSubmitted] = useState(false);
@@ -80,51 +80,8 @@ function Deposit() {
         return (
             <div>
                 <h1>Success!</h1>
-                <h3>${amount} has been deposited into your account!</h3>
+                <h3>${amount} has been deposited into your account at {created.date}</h3>
                 <h6><a href='/home'>Return</a></h6>
-            </div>
-        )
-    }
-    else if (user.has_savings) {
-        return (
-            <div>
-                <h1>Deposit</h1>
-                <h3>
-                    <form onSubmit={handleSubmit}>
-                        <p>To which account would you like to deposit?</p>
-                        <label>
-                            <input
-                                type='radio'
-                                name='ToAcct'
-                                value={0}
-                                onChange={handleAcctChange}
-                                checked={true}/>
-                                Checking
-                        </label>
-                        <label>
-                            <input
-                                type='radio'
-                                name='ToAcct'
-                                value={1}
-                                onChange={handleAcctChange}/>
-                                Savings
-                        </label>
-                        <label>
-                            <p>How much would you like to deposit?</p>
-                            <input
-                                type='number'
-                                value={amount}
-                                placeholder='$'
-                                name='amount'
-                                step={0.01}
-                                onChange={handleAmountChange}
-                                required/>
-                        </label>
-                        <div>
-                            <button type='submit'>Confirm</button>
-                        </div>
-                    </form>
-                </h3>
             </div>
         )
     }
@@ -134,6 +91,27 @@ function Deposit() {
                 <h1>Deposit</h1>
                 <h3>
                     <form onSubmit={handleSubmit}>
+                        {user.has_savings ?
+                        <div>
+                            <p>To which account would you like to deposit?</p>
+                            <label>
+                                <input
+                                    type='radio'
+                                    name='ToAcct'
+                                    value={0}
+                                    onChange={handleAcctChange}
+                                    checked={true}/>
+                                    Checking
+                            </label>
+                            <label>
+                                <input
+                                    type='radio'
+                                    name='ToAcct'
+                                    value={1}
+                                    onChange={handleAcctChange}/>
+                                    Savings
+                            </label>
+                        </div> : null}
                         <label>
                             <p>How much would you like to deposit?</p>
                             <input
@@ -141,6 +119,7 @@ function Deposit() {
                                 value={amount}
                                 placeholder='$'
                                 name='amount'
+                                min='0'
                                 step={0.01}
                                 onChange={handleAmountChange}
                                 required/>
