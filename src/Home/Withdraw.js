@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import '../App.css';
 
-const transactionURL = "http://localhost:8080/api/transaction";
-const customerURL = "http://localhost:8080/api/customer/username" + sessionStorage.getItem('username');
-//const transactionURL = "https://dollarsbank-v3.herokuapp.com/api/transaction;"
-//const customerURL = "https://dollarsbankd-v3.herokuapp.com/api/customer/username/" + sessionStorage.getItem('username');
-
 function Withdraw() {
+    const transactionURL = "http://localhost:8080/api/transaction";
+    const customerURL = "http://localhost:8080/api/customer/username/" + sessionStorage.getItem('username');
+    //const transactionURL = "https://dollarsbank-v3.herokuapp.com/api/transaction;"
+    //const customerURL = "https://dollarsbankd-v3.herokuapp.com/api/customer/username/" + sessionStorage.getItem('username');
+    
     const [submitted, setSubmitted] = useState(false);
     const [valid, setValid] = useState(false);
     const [amount, setAmount] = useState([]);
@@ -59,31 +59,37 @@ function Withdraw() {
                 'toAcct': acct,
                 'type': 1
             })
-            .then(response => {
-                if(response.ok) {
-                    setValid(true);
-                    return response.json();
-                }
-                else {
-                    throw new Error("Something went wrong");
-                }
-            })
-            .then(result => {
-                setCreated(result);
-            })
-            .catch((error) => {
-                console.log(error);
-            })
+        })
+        .then(response => {
+            if(response.ok) {
+                setValid(true);
+                return response.json();
+            }
+            else {
+                throw new Error("Something went wrong");
+            }
+        })
+        .then(result => {
+            setCreated(result);
+            return result;
+        })
+        .catch((error) => {
+            console.log(error);
         })
     }
     
-    
-    if(submitted && valid) {
+    if(user.checking === null) {
+        return (
+            <div className='main-page'>
+                <h1>Please open a checking account before proceeding...</h1>
+            </div>
+        )
+    }
+    else if(submitted && valid) {
         return (
             <div>
                 <h1>Success!</h1>
                 <h3>${amount} has been withdrawn into your account!</h3>
-                <h6><a href='/home'>Return</a></h6>
             </div>
         )
     }

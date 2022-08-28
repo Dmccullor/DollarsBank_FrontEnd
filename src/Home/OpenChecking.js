@@ -1,35 +1,30 @@
 import React, {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import '../App.css'
 
-const checkingURL = "http://localhost:8080/api/checking";
-const transactionURL = "http://localhost:8080/api/transaction";
-//const checkingURL = "https://dollarsbank-v3.herokuapp.com/api/checking;"
-//const transactionURL = "https://dollarsbank-v3.herokuapp.com/api/transaction;"
-
-
-
 const OpenChecking = () => {
+    const checkingURL = "http://localhost:8080/api/checking";
+    const transactionURL = "http://localhost:8080/api/transaction";
+    const customerURL = "http://localhost:8080/api/customer/username/" + sessionStorage.getItem('username');
+    //const checkingURL = "https://dollarsbank-v3.herokuapp.com/api/checking;"
+    //const transactionURL = "https://dollarsbank-v3.herokuapp.com/api/transaction;"
+    //const customerURL = "https://dollarsbankd-v3.herokuapp.com/api/customer/username/" + sessionStorage.getItem('username');
+    
+    const [user, setUser] = useState([]);
     const [submitted, setSubmitted] = useState(false);
     const [init, setInit] = useState([]);
     const [valid, setValid] = useState(false);
     const [account, setAccount] = useState([]);
 
-    const handleChange = e => {
-        setInit(e.target.value);
-    }
-
     useEffect( () => {
-        fetch(transactionURL, {
-            method: 'POST',
+        console.log(sessionStorage.getItem('username'));
+        
+        fetch(customerURL, {
+            method: 'GET',
             headers: {
-                'Content-Type': 'appliation/json',
+                'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + sessionStorage.getItem('jwt')
-            },
-            body: JSON.stringify({
-                'amount': init,
-                'toAcct': 0,
-                'type': 0
-            })
+            }
         })
         .then(response => {
             if(response.ok) {
@@ -39,16 +34,20 @@ const OpenChecking = () => {
                 throw new Error("Something went wrong");
             }
         })
-        .catch((error) => {
-            console.log(error);
+        .then(result => {
+            setUser(result);
         })
-    }, [valid])
+    }, []);
+
+    const handleChange = e => {
+        setInit(e.target.value);
+    }
 
     const handleSubmit = async e => {
         e.preventDefault();
         setSubmitted(true);
 
-        fetch(checkingURL, {
+        const result = fetch(checkingURL, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -70,25 +69,67 @@ const OpenChecking = () => {
         })
         .then(result => {
             setAccount(result);
+            return result;
         })
         .catch((error) => {
             console.log(error);
         })
     }
 
+    // async function sendTransaction() {
+    //     await handleSubmit
+    // }
+
+    useEffect( () => {
+        if(!valid) {
+            console.log("Cancelled post");
+        }
+        else {
+            fetch(transactionURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + sessionStorage.getItem('jwt')
+                },
+                body: JSON.stringify({
+                    'amount': init,
+                    'toAcct': 0,
+                    'type': 0
+                })
+            })
+            .then(response => {
+                if(response.ok) {
+                    return response.json();
+                }
+                else {
+                    throw new Error("Something went wrong");
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        }
+    }, [valid])
+
 
     if(submitted && valid) {
         return (
-            <div className='welcome-message'>
+            <div className='main-page'>
                 <h1>Your new checking account has been opened!</h1>
                 <h3>Your checking account ID is {account.id}</h3>
-                <h5><a href='/home'>Return</a></h5>
+            </div>
+        )
+    }
+    else if(user.checking) {
+        return (
+            <div className='main-page'>
+                <h2 style={{color:'red'}}>You already have a checking account</h2>
             </div>
         )
     }
     else {
         return (
-            <div className='form-container'>
+            <div className='main-page'>
                 <div className='title'>
                     <h1>Open a new Checking Account</h1>
                 </div>

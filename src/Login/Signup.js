@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import {Link} from 'react-router-dom';
 import '../App.css';
 
-//const URL = "https://dollarsbank-v3.herokuapp.com/api/customer"
-const URL = "http://localhost:8080/api/customer"
+
 
 const SignUp = () => {
+    //const URL = "https://dollarsbank-v3.herokuapp.com/api/customer"
+    const URL = "http://localhost:8080/api/customer"
 
     const [user, setUser] = useState([]);
     const [submitted, setSubmitted] = useState(false);
@@ -72,9 +74,9 @@ const SignUp = () => {
 
     if(submitted && valid) {
         return (
-            <div className='welcome-message'>
+            <div className='main-page'>
                 <h1>Welcome to DollarsBank {user.name}!</h1>
-                <p>Please proceed to login <a href='/'>here</a></p>
+                <p>Please proceed to login <Link to='/'>here</Link></p>
             </div>
         )
     }

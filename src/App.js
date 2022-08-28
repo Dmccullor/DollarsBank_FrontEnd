@@ -1,16 +1,9 @@
 import './App.css';
-// import Login from './Login/Login';
-// import Deposit from './Home/Deposit';
-// import Info from './Home/Info';
-import History from './Home/History';
-
+import Login from './Login/Login';
 
 function App() {
   return (
-    //<Login/>
-    //<Deposit/>
-    //<Info/>
-    <History/>
+    <Login/>
   );
 }
 

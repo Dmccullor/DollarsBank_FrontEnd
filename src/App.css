@@ -24,6 +24,10 @@
   text-decoration: none;
 }
 
+.Link {
+  text-decoration: none;
+}
+
 .nav ul {
   padding: 5%;
   margin: 0;
@@ -58,9 +62,13 @@
 }
 
 .main-page {
-  border: 50px;
+  padding-left: 5%;
+  padding-bottom: 100%;
   background-color: beige;
-  
+}
+
+.main-page link {
+  text-decoration: none;
 }
 
 .home-link {

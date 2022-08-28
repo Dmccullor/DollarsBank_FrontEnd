@@ -1,13 +1,18 @@
 import React, {useState, useEffect} from 'react';
 import '../App.css';
 
-const customerURL = "http://localhost:8080/api/customer/username" + sessionStorage.getItem('username');
-//const customerURL = "https://dollarsbankd-v3.herokuapp.com/api/customer/username/" + sessionStorage.getItem('username');
+
 
 function Info() {
+    const customerURL = "http://localhost:8080/api/customer/username/" + sessionStorage.getItem('username');
+    //const customerURL = "https://dollarsbankd-v3.herokuapp.com/api/customer/username/" + sessionStorage.getItem('username');
+    
     const [user, setUser] = useState([]);
 
     useEffect( () => {
+        console.log(customerURL);
+        console.log(sessionStorage.getItem('username'));
+        
         fetch(customerURL, {
             method: 'GET',
             headers: {
@@ -31,7 +36,7 @@ function Info() {
     return (
         <div className='main-page'>
             <div className='title'>
-                <h1>Customer Information</h1>
+                <h1>Welcome to DollarsBank {user.name}!</h1>
             </div>
             <div className='info-table'>
                 <table>
