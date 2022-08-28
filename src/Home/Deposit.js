@@ -12,7 +12,6 @@ function Deposit() {
     const [amount, setAmount] = useState([]);
     const [acct, setAcct] = useState(0);
     const [user, setUser] = useState([]);
-    const [created, setCreated] = useState([]);
     
     useEffect( () => {
         console.log(sessionStorage.getItem('username'));
@@ -70,9 +69,6 @@ function Deposit() {
                 throw new Error("Something went wrong");
             }
         })
-        .then(result => {
-            setCreated(result);
-        })
         .catch((error) => {
             console.log(error);
         })
@@ -89,7 +85,7 @@ function Deposit() {
         return (
             <div className='main-page'>
                 <h1>Success!</h1>
-                <h3>${amount} has been deposited into your account at {created.date}</h3>
+                <h3>${amount} has been deposited into your account</h3>
             </div>
         )
     }
@@ -129,7 +125,7 @@ function Deposit() {
                                 value={amount}
                                 placeholder='$'
                                 name='amount'
-                                min='0'
+                                min={0.01}
                                 step={0.01}
                                 onChange={handleAmountChange}
                                 required/>

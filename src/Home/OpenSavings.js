@@ -120,7 +120,7 @@ const Opensavings = () => {
     }
     else if(user.has_savings) {
         return (
-            <div>
+            <div className='main-page'>
                 <h2 style={{color:'red'}}>You already have a savings account</h2>
             </div>
         )

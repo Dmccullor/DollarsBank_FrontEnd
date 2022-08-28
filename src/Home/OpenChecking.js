@@ -76,10 +76,6 @@ const OpenChecking = () => {
         })
     }
 
-    // async function sendTransaction() {
-    //     await handleSubmit
-    // }
-
     useEffect( () => {
         if(!valid) {
             console.log("Cancelled post");
