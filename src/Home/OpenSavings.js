@@ -6,9 +6,9 @@ const Opensavings = () => {
     // const savingsURL = "http://localhost:8080/api/savings";
     // const transactionURL = "http://localhost:8080/api/transaction";
     // const customerURL = "http://localhost:8080/api/customer/username/" + sessionStorage.getItem('username');
-    const savingsURL = "https://dollarsbank-v3.herokuapp.com/api/checking;"
-    const transactionURL = "https://dollarsbank-v3.herokuapp.com/api/transaction;"
-    const customerURL = "https://dollarsbankd-v3.herokuapp.com/api/customer/username/" + sessionStorage.getItem('username');
+    const savingsURL = "https://dollarsbank-v3.herokuapp.com/api/savings";
+    const transactionURL = "https://dollarsbank-v3.herokuapp.com/api/transaction";
+    const customerURL = "https://dollarsbank-v3.herokuapp.com/api/customer/username/" + sessionStorage.getItem('username');
     
     const [submitted, setSubmitted] = useState(false);
     const [valid, setValid] = useState(false);

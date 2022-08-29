@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import SignUp from './Login/Signup';
 import Home from './Home/Home';
 import Welcome from './Home/Welcome';
@@ -18,7 +18,7 @@ import History from './Home/History';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <HashRouter basename={process.env.DollarsBank_FrontEnd}>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}/>
         <Route path="/signup" element={<SignUp/>}/>
@@ -34,7 +34,7 @@ root.render(
           <Route path="/home/history" element={<History/>}/>
         </Route>
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
