@@ -1,6 +1,6 @@
-import React, { useEffect }from 'react';
+import React from 'react';
 import '../App.css';
-import {Outlet, Navigate} from 'react-router-dom'
+import {Outlet} from 'react-router-dom'
 import Nav from './Nav';
 
 function Home() {

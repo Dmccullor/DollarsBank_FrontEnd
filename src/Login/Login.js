@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import '../App.css';
 
@@ -6,13 +6,12 @@ import '../App.css';
 const Login = () => {
     sessionStorage.clear();
 
-    //const URL = "https://dollarsbank-v3.herokuapp.com/api/authenticate;"
-    const URL = "http://localhost:8080/api/authenticate";
+    const URL = "https://dollarsbank-v3.herokuapp.com/api/authenticate";
+    // const URL = "http://localhost:8080/api/authenticate";
 
     const [submitted, setSubmitted] = useState(false);
     const [valid, setValid] = useState(false);
     const [found, setFound] = useState(true);
-    const [user, setUser] = useState(null);
     const [credentials, setCredentials] = useState({
         username: "",
         password: ""

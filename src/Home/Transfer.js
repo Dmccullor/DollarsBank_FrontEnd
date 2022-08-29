@@ -3,10 +3,10 @@ import ReactjsAlert from 'reactjs-alert';
 import '../App.css';
 
 function Transfer() {
-    const transactionURL = "http://localhost:8080/api/transaction";
-    const customerURL = "http://localhost:8080/api/customer/username/" + sessionStorage.getItem('username');
-    //const transactionURL = "https://dollarsbank-v3.herokuapp.com/api/transaction;"
-    //const customerURL = "https://dollarsbankd-v3.herokuapp.com/api/customer/username/" + sessionStorage.getItem('username');
+    // const transactionURL = "http://localhost:8080/api/transaction";
+    // const customerURL = "http://localhost:8080/api/customer/username/" + sessionStorage.getItem('username');
+    const transactionURL = "https://dollarsbank-v3.herokuapp.com/api/transaction;"
+    const customerURL = "https://dollarsbankd-v3.herokuapp.com/api/customer/username/" + sessionStorage.getItem('username');
     
     const [status, setStatus] = useState(false);
     const [type, setType] = useState([]);

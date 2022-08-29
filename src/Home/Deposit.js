@@ -2,10 +2,10 @@ import React, {useState, useEffect} from 'react';
 import '../App.css';
 
 function Deposit() {
-    const transactionURL = "http://localhost:8080/api/transaction";
-    const customerURL = "http://localhost:8080/api/customer/username/" + sessionStorage.getItem('username');
-    //const transactionURL = "https://dollarsbank-v3.herokuapp.com/api/transaction;"
-    //const customerURL = "https://dollarsbankd-v3.herokuapp.com/api/customer/username/" + sessionStorage.getItem('username');
+    // const transactionURL = "http://localhost:8080/api/transaction";
+    // const customerURL = "http://localhost:8080/api/customer/username/" + sessionStorage.getItem('username');
+    const transactionURL = "https://dollarsbank-v3.herokuapp.com/api/transaction;"
+    const customerURL = "https://dollarsbankd-v3.herokuapp.com/api/customer/username/" + sessionStorage.getItem('username');
     
     const [submitted, setSubmitted] = useState(false);
     const [valid, setValid] = useState(false);

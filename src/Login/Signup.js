@@ -5,8 +5,8 @@ import '../App.css';
 
 
 const SignUp = () => {
-    //const URL = "https://dollarsbank-v3.herokuapp.com/api/customer"
-    const URL = "http://localhost:8080/api/customer"
+    const URL = "https://dollarsbank-v3.herokuapp.com/api/customer"
+    // const URL = "http://localhost:8080/api/customer"
 
     const [user, setUser] = useState([]);
     const [submitted, setSubmitted] = useState(false);
