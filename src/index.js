@@ -18,7 +18,7 @@ import History from './Home/History';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <HashRouter>
+    <HashRouter basename={process.env.DollarsBank_FrontEnd}>
       <Routes>
         <Route path="/" element={<App />}/>
         <Route path="/signup" element={<SignUp/>}/>
