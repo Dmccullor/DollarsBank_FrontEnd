@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/dollarsbank_frontend/static/css/main.84423cd7.css",
+    "main.js": "/dollarsbank_frontend/static/js/main.09981154.js",
+    "static/js/787.901b71fa.chunk.js": "/dollarsbank_frontend/static/js/787.901b71fa.chunk.js",
+    "index.html": "/dollarsbank_frontend/index.html",
+    "main.84423cd7.css.map": "/dollarsbank_frontend/static/css/main.84423cd7.css.map",
+    "main.09981154.js.map": "/dollarsbank_frontend/static/js/main.09981154.js.map",
+    "787.901b71fa.chunk.js.map": "/dollarsbank_frontend/static/js/787.901b71fa.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.84423cd7.css",
+    "static/js/main.09981154.js"
+  ]
+}
