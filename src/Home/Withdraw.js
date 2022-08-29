@@ -16,7 +16,7 @@ function Withdraw() {
     const [submitted, setSubmitted] = useState(false);
     const [valid, setValid] = useState(false);
     const [amount, setAmount] = useState([]);
-    const [acct, setAcct] = useState(0);
+    const [acct, setAcct] = useState('0');
     const [user, setUser] = useState([]);
     const [totals, setTotals] = useState({
         checking: 0,

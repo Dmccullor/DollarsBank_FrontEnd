@@ -99,6 +99,10 @@ th, td {
   padding-bottom: 5%;
 }
 
+.welcome-text {
+  text-align: center;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

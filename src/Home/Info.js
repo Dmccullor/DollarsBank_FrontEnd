@@ -36,7 +36,7 @@ function Info() {
     return (
         <div className='main-page'>
             <div className='title'>
-                <h1>Welcome to DollarsBank {user.name}!</h1>
+                <h1>Customer Information</h1>
             </div>
             <div className='info-table'>
                 <table>

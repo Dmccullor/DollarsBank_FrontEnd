@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import SignUp from './Login/Signup';
 import Home from './Home/Home';
+import Welcome from './Home/Welcome';
 import OpenChecking from './Home/OpenChecking';
 import Opensavings from './Home/OpenSavings';
 import Deposit from './Home/Deposit';
@@ -22,6 +23,8 @@ root.render(
         <Route path="/" element={<App />}/>
         <Route path="/signup" element={<SignUp/>}/>
         <Route path="/home" element={<Home/>}>
+          <Route index element={<Welcome/>}/>
+          <Route path="/home/welcome" element={<Welcome/>}/>
           <Route path="/home/openchecking" element={<OpenChecking/>}/>
           <Route path="/home/opensavings" element={<Opensavings/>}/>
           <Route path="/home/deposit" element={<Deposit/>}/>

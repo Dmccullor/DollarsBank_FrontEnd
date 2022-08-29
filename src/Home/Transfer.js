@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import ReactjsAlert from 'reactjs-alert';
-import reactjsAlert from 'reactjs-alert';
 import '../App.css';
 
 function Transfer() {
@@ -17,7 +16,7 @@ function Transfer() {
     const [submitted, setSubmitted] = useState(false);
     const [valid, setValid] = useState(false);
     const [amount, setAmount] = useState([]);
-    const [acct, setAcct] = useState(0);
+    const [acct, setAcct] = useState('0');
     const [user, setUser] = useState([]);
     const [totals, setTotals] = useState({
         checking: 0,
