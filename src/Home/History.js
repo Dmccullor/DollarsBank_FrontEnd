@@ -4,14 +4,11 @@ import '../App.css';
 
 
 function History() {
-    // const customerURL = "http://localhost:8080/api/customer/username/" + sessionStorage.getItem('username');
-    const customerURL = "https://dollarsbank-v3.herokuapp.com/api/customer/username/" + sessionStorage.getItem('username');
-    
     const [user, setUser] = useState(null);
 
     useEffect( () => {
-        console.log(customerURL);
-        console.log(sessionStorage.getItem('username'));
+    // const customerURL = "http://localhost:8080/api/customer/username/" + sessionStorage.getItem('username');
+    const customerURL = "https://dollarsbank-v3.herokuapp.com/api/customer/username/" + sessionStorage.getItem('username');
         
         fetch(customerURL, {
             method: 'GET',

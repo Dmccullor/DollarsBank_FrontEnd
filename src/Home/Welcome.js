@@ -2,12 +2,12 @@ import React, {useState, useEffect} from 'react';
 import '../App.css'
 
 function Welcome() {
-    // const customerURL = "http://localhost:8080/api/customer/username/" + sessionStorage.getItem('username');
-    const customerURL = "https://dollarsbank-v3.herokuapp.com/api/customer/username/" + sessionStorage.getItem('username');
-
     const [user, setUser] = useState([]);
 
     useEffect( () => {        
+        // const customerURL = "http://localhost:8080/api/customer/username/" + sessionStorage.getItem('username');
+        const customerURL = "https://dollarsbank-v3.herokuapp.com/api/customer/username/" + sessionStorage.getItem('username');
+        
         fetch(customerURL, {
             method: 'GET',
             headers: {

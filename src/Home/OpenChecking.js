@@ -4,10 +4,9 @@ import '../App.css'
 const OpenChecking = () => {
     // const checkingURL = "http://localhost:8080/api/checking";
     // const transactionURL = "http://localhost:8080/api/transaction";
-    // const customerURL = "http://localhost:8080/api/customer/username/" + sessionStorage.getItem('username');
     const checkingURL = "https://dollarsbank-v3.herokuapp.com/api/checking";
     const transactionURL = "https://dollarsbank-v3.herokuapp.com/api/transaction";
-    const customerURL = "https://dollarsbank-v3.herokuapp.com/api/customer/username/" + sessionStorage.getItem('username');
+    
     
     const [user, setUser] = useState([]);
     const [submitted, setSubmitted] = useState(false);
@@ -16,7 +15,8 @@ const OpenChecking = () => {
     const [account, setAccount] = useState([]);
 
     useEffect( () => {
-        console.log(sessionStorage.getItem('username'));
+        const customerURL = "https://dollarsbank-v3.herokuapp.com/api/customer/username/" + sessionStorage.getItem('username');
+        // const customerURL = "http://localhost:8080/api/customer/username/" + sessionStorage.getItem('username');
         
         fetch(customerURL, {
             method: 'GET',
@@ -46,7 +46,7 @@ const OpenChecking = () => {
         e.preventDefault();
         setSubmitted(true);
 
-        const result = fetch(checkingURL, {
+        fetch(checkingURL, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -104,6 +104,7 @@ const OpenChecking = () => {
                 console.log(error);
             })
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [valid])
 
 
